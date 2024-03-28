@@ -10,9 +10,9 @@ def homepage():
 
 @app.route('/pizza/<int:id>')
 def pizza(id):
-    conn = sqlite3.connect('chatgpt_pizza.db')
+    conn = sqlite3.connect('pizza.db')
     cur = conn.cursor()
-    cur.execute('SELECT * FROM Pizzas WHERE pizza_id=?', (id,))
+    cur.execute('SELECT * FROM Pizza WHERE id=?', (id,))
     pizza = cur.fetchone()
     return render_template('pizza.html', pizza=pizza)
 
