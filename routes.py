@@ -1,7 +1,15 @@
 from flask import Flask, render_template
+from config import Config
 import sqlite3
 
 app = Flask(__name__)
+app.config.from_object(Config)
+
+
+@app.context_processor
+def context_processor():
+    return dict(title=app.config['TITLE'])
+
 
 @app.route('/')
 def homepage():

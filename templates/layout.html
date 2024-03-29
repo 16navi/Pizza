@@ -1,11 +1,11 @@
 <!doctype html>
 <html>
 	<head>
-		<title>My Site!</title>
+		<title>My Site: {{ title }}</title>
 		<link rel="stylesheet" href="/static/style.css">
 	</head>
 	<body>
-		<header>The Header</header>
+		<header>{%include 'header.html'%}</header>
 		<nav>NAVBAR</nav>
 		<main>
 		{%block content%}{%endblock%}

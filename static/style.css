@@ -1,9 +1,23 @@
-body {
-	color: pink;
-	font-family: "Comic Sans MS";
-	background-color: lightgreen;
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
+
+html {
+	font-family: 'DM Sans';
 }
 
-main {
-	color: red;
+h1 {
+	font-family: 'Archivo Black';
+	text-transform: uppercase;
+	font-size: 50px;
+	text-align: center;
 }
+
+header {
+	background-image: url('/static/images/pizza_icon.png');
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position-x: 5px;
+	background-position-y: 5px;
+	padding: 10px;
+}
+
