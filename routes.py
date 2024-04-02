@@ -16,6 +16,16 @@ def homepage():
     return render_template("home.html")
 
 
+@app.route('/all_pizzas')
+def all_pizzas():
+    conn = sqlite3.connect(app.config['DATABASE'])
+    cur = conn.cursor()
+    cur.execute('SELECT * FROM Pizza')
+    pizzas = cur.fetchall()
+    conn.close()
+    return render_template('all_pizzas.html', pizzas = pizzas)
+
+
 @app.route('/pizza/<int:id>')
 def pizza(id):
     conn = sqlite3.connect('pizza.db')
