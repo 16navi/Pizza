@@ -1,13 +1,15 @@
 {% extends 'layout.html' %}
+
 {% block content %}
 
+    <ul>
     {% if pizza[0] + 1 < 9 %}
-        <li><p><a href="/pizza/{{pizza[0] + 1}}">Next Pizza</a></p></li>
+        <li><a href="/pizza/{{pizza[0] + 1}}">Next Pizza</a></li>
     {% endif %}
-
-    {% if pizza[0] + 1 <= 9 and pizza[0] - 1 != -1%}
-        <li><p><a href="/pizza/{{pizza[0] - 1}}">Previous Pizza</a></p></li>
+    {% if pizza[0] - 1 > 0 %}
+        <li><a href="/pizza/{{pizza[0] - 1}}">Previous Pizza</a></li>
     {% endif %}
+    </ul>
 
     <p>You picked: Pizza No. {{pizza[0]}}</p>
     <h1>{{pizza[1]}}</h1>
