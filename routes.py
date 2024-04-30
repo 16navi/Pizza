@@ -1,10 +1,17 @@
 from flask import Flask, render_template
 from config import Config
 import sqlite3
+from flask_sqlalchemy import SQLAlchemy
+
 
 app = Flask(__name__)
 app.config.from_object(Config)
+app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///pizza.db"
+app.secret_key = "correcthorsebatterystaple"
 
+db = SQLAlchemy(app)
+
+import models
 
 @app.context_processor
 def context_processor():
