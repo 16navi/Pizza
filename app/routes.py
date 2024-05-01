@@ -1,21 +1,16 @@
-from flask import Flask, render_template
-from config import Config
-import sqlite3
+from app import app
+from flask import render_template, abort
 from flask_sqlalchemy import SQLAlchemy
+import os
 
 
-app = Flask(__name__)
-app.config.from_object(Config)
-app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///pizza.db"
-app.secret_key = "correcthorsebatterystaple"
+basedir = os.path.abspath(os.path.dirname(__file__))
+db = SQLAlchemy()
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, "pizza.db")
+db.init_app(app)
 
-db = SQLAlchemy(app)
 
-import models
-
-@app.context_processor
-def context_processor():
-    return dict(title=app.config['TITLE'])
+import app.models as models
 
 
 @app.route('/')
@@ -25,21 +20,12 @@ def homepage():
 
 @app.route('/all_pizzas')
 def all_pizzas():
-    """conn = sqlite3.connect(app.config['DATABASE'])
-    cur = conn.cursor()
-    cur.execute('SELECT * FROM Pizza')
-    pizzas = cur.fetchall()
-    conn.close()"""
-    pizzas = db.models.Pizza.query.all()
+    pizzas = models.Pizza.query.all()
     return render_template('all_pizzas.html', pizzas = pizzas)
 
 
 @app.route('/pizza/<int:id>')
 def pizza(id):
-    conn = sqlite3.connect('pizza.db')
-    cur = conn.cursor()
-    cur.execute('SELECT * FROM Pizza WHERE id=?', (id,))
-    pizza = cur.fetchone()
     return render_template('pizza.html', pizza=pizza)
 
 
