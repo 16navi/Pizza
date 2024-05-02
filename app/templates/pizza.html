@@ -2,6 +2,19 @@
 
 {% block content %}
 
+    <ul>
+    {% if {{pizza.id}} + 1 < 9 %}
+        <li><p><a href="/pizza/{{pizza.id}} + 1}}">Next Pizza</a></p></li>
+        <li><a href="/pizza/{{pizza.id}} + 1}}">Next Pizza</a></li>
+    {% endif %}
+
+    {% if {{pizza.id}} + 1 <= 9 and {{pizza.id}} - 1 != -1%}
+        <li><p><a href="/pizza/{{pizza.id}} - 1}}">Previous Pizza</a></p></li>
+    {% if {{pizza.id}} - 1 > 0 %}
+        <li><a href="/pizza/{{pizza.id}} - 1}}">Previous Pizza</a></li>
+    {% endif %}
+    </ul>
+
     <p>You picked: Pizza No. {{pizza.id}}</p>
     <h1>{{pizza.name}}</h1>
     <p>{{pizza.description}}</p>
