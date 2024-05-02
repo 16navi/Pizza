@@ -1,5 +1,9 @@
 {% extends 'layout.html'%}
 
 {% block content %}
-<p>nothing yet</p>
+    <ul>
+    {% for pizza in all_pizzas %}
+        <li><a href="/pizza/{{pizza.id}}" >{{pizza.name}}</li>
+    {% endfor %}
+    </ul>
 {% endblock %}

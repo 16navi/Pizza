@@ -20,13 +20,14 @@ def homepage():
 
 @app.route('/all_pizzas')
 def all_pizzas():
-    pizzas = models.Pizza.query.all()
-    return render_template('all_pizzas.html', pizzas = pizzas)
+    all_pizzas = models.Pizza.query.all()
+    return render_template('all_pizzas.html', all_pizzas = all_pizzas)
 
 
 @app.route('/pizza/<int:id>')
 def pizza(id):
-    return render_template('pizza.html', pizza=pizza)
+    pizza = models.Pizza.query.filter_by(id = id).first()
+    return render_template('pizza.html', pizza = pizza)
 
 
 if __name__ == "__main__":
