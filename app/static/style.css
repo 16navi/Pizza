@@ -20,3 +20,13 @@ header {
 	padding: 10px;
 }
 
+.img-container {
+	width: 80%;
+	margin: 0 auto;
+}
+
+.img-cropped {
+	object-fit: cover;
+	object-position: center center;
+	width: 24%;
+}
