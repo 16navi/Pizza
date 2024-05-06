@@ -6,8 +6,9 @@ class Pizza(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     name = db.Column(db.Text())
     description = db.Column(db.Text())
-    base = db.Column(db.Integer())
     photo = db.Column(db.Text())
+    base_id = db.Column(db.Integer, db.ForeignKey("Base.id"))
+    base = db.relationship("Base", backref = "pizzas")
 
 
     def __repr__(self):
@@ -33,3 +34,7 @@ class Topping(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     name = db.Column(db.Text())
     description = db.Column(db.Text())
+
+
+    def __repr__(self):
+        return self.name

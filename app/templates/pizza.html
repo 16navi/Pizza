@@ -18,5 +18,18 @@
     <div class = "img-container">
         <img class = "img-cropped" src = "{{pizza.photo}}" alt="{{pizza.photo}}"/>
     </div>
+    <p>{{pizza.base.name}} - {{pizza.base.description}}</p>
+    
+    {% if pizza.base.gf %}
+        <h1>ITS GLUTEN FREE!!!!</h1>
+    {% endif %}
+   
+    {% if pizza.base.vege %}
+        <h1>ITS VEGETARIAN!!!!</h1>
+    {% endif %}
+
+    {% if pizza.base.vegan %}
+        <h1>ITS VEGAN!!!!</h1>
+    {% endif %}
 
 {% endblock %}
