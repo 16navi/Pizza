@@ -19,6 +19,13 @@
         <img class = "img-cropped" src = "{{pizza.photo}}" alt="{{pizza.photo}}"/>
     </div>
     <p>{{pizza.base.name}} - {{pizza.base.description}}</p>
+
+    <h1>Toppings are:</h1>
+    <ul>
+    {% for topping in pizza.toppings %}
+        <li>{{topping}} - {{topping.description}}</li>
+    {% endfor %}
+    </ul>
     
     {% if pizza.base.gf %}
         <h1>ITS GLUTEN FREE!!!!</h1>
